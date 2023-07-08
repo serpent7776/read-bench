@@ -34,9 +34,31 @@ memcheck:
 	@./memcheck.sh ./while_fread
 	@./memcheck.sh ./while_read
 
+csv:
+	@echo ", user, system, total, cpu, max resident, major faults, minor faults" > data.csv
+	@./csv.sh ./seekg_tellg >> data.csv
+	@./csv.sh ./istreambuf_iterator >> data.csv
+	@./csv.sh ./ostringstream >> data.csv
+	@./csv.sh ./while_read_resize >> data.csv
+	@./csv.sh ./fstat_fread >> data.csv
+	@./csv.sh ./getline_eof >> data.csv
+	@./csv.sh ./ignore_seekg >> data.csv
+	@./csv.sh ./while_fread >> data.csv
+	@./csv.sh ./while_read >> data.csv
+
 test_98M: all prepare_98M time
 
 test_980M: all prepare_980M time
+
+csv_98M: all prepare_98M csv
+
+scim_98M: csv_98M
+	sc-im data.csv
+
+scim_980M: csv_980M
+	sc-im data.csv
+
+csv_980M: all prepare_980M csv
 
 memcheck_98M: all prepare_98M memcheck
 
