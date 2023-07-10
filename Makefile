@@ -64,6 +64,12 @@ scim_980M: csv_980M
 
 csv_980M: all prepare_980M csv
 
+time_plot_98M: csv_98M
+	./plot.sh 98M
+
+time_plot_980M: csv_980M
+	./plot.sh 980M
+
 memcheck_98M: all prepare_98M memcheck
 
 memcheck_980M: all prepare_980M memcheck
