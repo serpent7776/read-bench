@@ -50,5 +50,8 @@ memcheck_98M: all prepare_98M memcheck
 
 memcheck_980M: all prepare_980M memcheck
 
+strace_98M: prepare_98M
+	@$(foreach exe, ${executables}, ./strace.sh ./${exe} &&) true
+
 clean:
 	rm -f ${objects} ${executables}
