@@ -67,3 +67,6 @@ csv_980M: all prepare_980M csv
 memcheck_98M: all prepare_98M memcheck
 
 memcheck_980M: all prepare_980M memcheck
+
+clean:
+	rm -f ${objects} ${executables}
