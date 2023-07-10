@@ -2,19 +2,22 @@
 #include <iostream>
 #include <vector>
 
+void proc(std::istream& stream)
+{
+	std::string content((std::istreambuf_iterator<char>(stream)), std::istreambuf_iterator<char>());
+	(void)content;
+	std::cout << content.size() << '\n';
+}
+
 int main(int argc, char** argv)
 {
 	if (argc > 1)
 	{
 		std::ifstream file(argv[1]);
-		std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-		(void)content;
-		std::cout << content.size() << '\n';
+		proc(file);
 	}
 	else
 	{
-		std::string content((std::istreambuf_iterator<char>(std::cin)), std::istreambuf_iterator<char>());
-		(void)content;
-		std::cout << content.size() << '\n';
+		proc(std::cin);
 	}
 }

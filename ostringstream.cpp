@@ -2,23 +2,24 @@
 #include <iostream>
 #include <sstream>
 
+void proc(std::istream& stream)
+{
+	std::ostringstream sstr;
+	sstr << stream.rdbuf();
+	std::string content = sstr.str();
+	(void)content;
+	std::cout << content.size() << '\n';
+}
+
 int main(int argc, char** argv)
 {
 	if (argc > 1)
 	{
 		std::ifstream file(argv[1]);
-		std::ostringstream sstr;
-		sstr << file.rdbuf();
-		std::string content = sstr.str();
-		(void)content;
-		std::cout << content.size() << '\n';
+		proc(file);
 	}
 	else
 	{
-		std::ostringstream sstr;
-		sstr << std::cin.rdbuf();
-		std::string content = sstr.str();
-		(void)content;
-		std::cout << content.size() << '\n';
+		proc(std::cin);
 	}
 }

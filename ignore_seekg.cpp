@@ -2,25 +2,25 @@
 #include <fstream>
 #include <limits>
 
+void proc(std::istream& stream)
+{
+	stream.ignore(std::numeric_limits<std::streamsize>::max());
+	std::string content(stream.gcount(), 0);
+	stream.seekg(0);
+	stream.read(&*content.begin(), content.size());
+	(void)content;
+	std::cout << content.size() << '\n';
+}
+
 int main(int argc, char** argv)
 {
 	if (argc > 1)
 	{
 		std::ifstream file(argv[1]);
-		file.ignore(std::numeric_limits<std::streamsize>::max());
-		std::string content(file.gcount(), 0);
-		file.seekg(0);
-		file.read(&*content.begin(), content.size());
-		(void)content;
-		std::cout << content.size() << '\n';
+		proc(file);
 	}
 	else
 	{
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max());
-		std::string content(std::cin.gcount(), 0);
-		std::cin.seekg(0);
-		std::cin.read(&*content.begin(), content.size());
-		(void)content;
-		std::cout << content.size() << '\n';
+		proc(std::cin);
 	}
 }
