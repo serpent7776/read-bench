@@ -16,39 +16,15 @@ prepare_980M:
 
 time:
 	@echo
-	@./time.sh ./seekg_tellg
-	@./time.sh ./istreambuf_iterator
-	@./time.sh ./ostringstream
-	@./time.sh ./while_read_resize
-	@./time.sh ./fstat_fread
-	@./time.sh ./getline_eof
-	@./time.sh ./ignore_seekg
-	@./time.sh ./while_fread
-	@./time.sh ./while_read
+	@$(foreach exe, $(executables), ./time.sh ./${exe} &&) true
 
 memcheck:
 	@echo
-	@./memcheck.sh ./seekg_tellg
-	@./memcheck.sh ./istreambuf_iterator
-	@./memcheck.sh ./ostringstream
-	@./memcheck.sh ./while_read_resize
-	@./memcheck.sh ./fstat_fread
-	@./memcheck.sh ./getline_eof
-	@./memcheck.sh ./ignore_seekg
-	@./memcheck.sh ./while_fread
-	@./memcheck.sh ./while_read
+	@$(foreach exe, $(executables), ./memcheck.sh ./${exe} &&) true
 
 csv:
 	@echo ", user, system, total, cpu, max resident, major faults, minor faults" > data.csv
-	@./csv.sh ./seekg_tellg >> data.csv
-	@./csv.sh ./istreambuf_iterator >> data.csv
-	@./csv.sh ./ostringstream >> data.csv
-	@./csv.sh ./while_read_resize >> data.csv
-	@./csv.sh ./fstat_fread >> data.csv
-	@./csv.sh ./getline_eof >> data.csv
-	@./csv.sh ./ignore_seekg >> data.csv
-	@./csv.sh ./while_fread >> data.csv
-	@./csv.sh ./while_read >> data.csv
+	@$(foreach exe, $(executables), ./csv.sh ./${exe} >> data.csv &&) true
 
 test_98M: all prepare_98M time
 
