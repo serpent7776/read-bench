@@ -1,6 +1,10 @@
 CXXFLAGS= -std=c++20 -Wall -Wextra -pedantic -O2 -ggdb3
 
-all: seekg_tellg istreambuf_iterator ostringstream while_read_resize fstat_fread getline_eof ignore_seekg while_fread while_read
+cpps := $(wildcard *.cpp)
+objects := $(patsubst %.cpp, %.o, ${cpps})
+executables := $(patsubst %.cpp, %, ${cpps})
+
+all: ${executables}
 
 prepare_98M:
 	rm -f input
