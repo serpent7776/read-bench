@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 	if (::fstat(::fileno(file), &st) == -1) abort();
 
 	content.resize(st.st_size);
-	::fread(&*content.begin(), 1, st.st_size, file);
+	::fread(content.data(), 1, st.st_size, file);
 	::fclose(file);
 
 	(void)content;

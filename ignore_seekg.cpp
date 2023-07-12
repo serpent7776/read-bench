@@ -7,7 +7,7 @@ void proc(std::istream& stream)
 	stream.ignore(std::numeric_limits<std::streamsize>::max());
 	std::string content(stream.gcount(), 0);
 	stream.seekg(0);
-	stream.read(&*content.begin(), content.size());
+	stream.read(content.data(), content.size());
 	(void)content;
 	std::cout << content.size() << '\n';
 }

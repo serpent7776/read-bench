@@ -10,7 +10,7 @@ void proc(std::istream& stream)
 	while(stream)
 	{
 		content.resize(++count * bufsize);
-		stream.read(&*content.begin() + offset, bufsize);
+		stream.read(content.data() + offset, bufsize);
 		offset += stream.gcount();
 	}
 	content.resize(offset);
