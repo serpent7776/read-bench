@@ -19,6 +19,7 @@ set style data histogram
 set style fill solid border -1
 set xtic rotate by -45
 set ylabel 'Total time [s]'
+set grid
 plot 'data.plot' u 2:xticlabel(1) title 'from file', '' u 3 title 'from stdin'
 " | gnuplot --persist
 
