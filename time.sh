@@ -1,7 +1,7 @@
 #!/bin/sh
 sz=`wc -c input | awk '{print $1}'`
 
-function check() {
+check() {
 	if ! [ "$out" -eq "$sz" ]; then
 		echo $out
 		exit 1
