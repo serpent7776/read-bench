@@ -1,10 +1,15 @@
 CXXFLAGS= -std=c++20 -Wall -Wextra -pedantic -O2 -ggdb3
 
+# https://stackoverflow.com/a/13375395/5956245
+LINK.o = $(LINK.cc)
+
 cpps := $(wildcard *.cpp)
 objects := $(patsubst %.cpp, %.o, ${cpps})
 executables := $(patsubst %.cpp, %, ${cpps})
 
 all: ${executables}
+
+${objects}: Makefile
 
 prepare_98M:
 	rm -f input
