@@ -5,6 +5,7 @@
 void proc(std::istream& stream)
 {
 	std::streamsize size = stream.tellg();
+	if (size == -1) abort();
 	stream.seekg(0, std::ios::beg);
 
 	std::vector<char> buffer(size);
