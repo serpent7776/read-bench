@@ -4,6 +4,7 @@
 
 void proc(std::istream& stream)
 {
+	stream.exceptions(std::ios_base::badbit | std::ios_base::failbit);
 	std::ostringstream sstr;
 	sstr << stream.rdbuf();
 	std::string content = sstr.str();

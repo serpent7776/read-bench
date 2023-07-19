@@ -4,6 +4,7 @@
 
 void proc(std::istream& stream)
 {
+	stream.exceptions(std::ios_base::badbit | std::ios_base::failbit);
 	std::string content((std::istreambuf_iterator<char>(stream)), std::istreambuf_iterator<char>());
 	(void)content;
 	std::cout << content.size() << '\n';

@@ -4,6 +4,7 @@
 
 void proc(std::istream& stream)
 {
+	stream.exceptions(std::ios_base::badbit | std::ios_base::failbit);
 	stream.ignore(std::numeric_limits<std::streamsize>::max());
 	std::string content(stream.gcount(), 0);
 	stream.seekg(0);
