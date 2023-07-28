@@ -14,7 +14,6 @@ void proc(std::istream& stream)
 		offset += stream.gcount();
 	}
 	content.resize(offset);
-	(void)content;
 	std::cout << content.size() << '\n';
 }
 

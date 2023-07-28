@@ -11,7 +11,6 @@ void proc(std::istream& stream)
 	std::vector<char> buffer(size);
 	if (stream.read(buffer.data(), size) and stream.gcount() == size) {/* ok */}
 	else abort();
-	(void)buffer;
 	std::cout << buffer.size() << '\n';
 }
 

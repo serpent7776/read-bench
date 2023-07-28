@@ -8,7 +8,6 @@ void proc(std::istream& stream)
 	std::ostringstream sstr;
 	sstr << stream.rdbuf();
 	std::string content = sstr.str();
-	(void)content;
 	std::cout << content.size() << '\n';
 }
 

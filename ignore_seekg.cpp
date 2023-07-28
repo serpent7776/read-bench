@@ -9,7 +9,6 @@ void proc(std::istream& stream)
 	std::string content(stream.gcount(), 0);
 	stream.seekg(0);
 	stream.read(content.data(), content.size());
-	(void)content;
 	std::cout << content.size() << '\n';
 }
 

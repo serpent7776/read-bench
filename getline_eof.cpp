@@ -7,7 +7,6 @@ void proc(std::istream& stream)
 	std::string content;
 	std::getline(stream, content, std::string::traits_type::to_char_type(
 			std::string::traits_type::eof()));
-	(void)content;
 	std::cout << content.size() << '\n';
 }
 

@@ -23,6 +23,5 @@ int main(int argc, char** argv)
 	}
 	::fclose(file);
 
-	(void)content;
 	std::cout << bytesread << '\n';
 }

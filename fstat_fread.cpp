@@ -14,6 +14,5 @@ int main(int argc, char** argv)
 	::fread(content.data(), 1, st.st_size, file);
 	::fclose(file);
 
-	(void)content;
 	std::cout << content.size() << '\n';
 }
