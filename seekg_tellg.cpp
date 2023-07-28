@@ -19,10 +19,12 @@ int main(int argc, char** argv)
 	if (argc > 1)
 	{
 		std::ifstream file(argv[1], std::ios::binary | std::ios::ate);
+		file.exceptions(std::ios_base::badbit | std::ios_base::failbit);
 		proc(file);
 	}
 	else
 	{
+		std::cin.exceptions(std::ios_base::badbit | std::ios_base::failbit);
 		std::cin.seekg(0, std::ios::end);
 		proc(std::cin);
 	}
