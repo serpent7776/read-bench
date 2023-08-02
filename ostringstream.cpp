@@ -13,6 +13,7 @@ void proc(std::istream& stream)
 
 int main(int argc, char** argv)
 {
+	std::ios_base::sync_with_stdio(STDIO_SYNC);
 	if (argc > 1)
 	{
 		std::ifstream file(argv[1]);

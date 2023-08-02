@@ -4,12 +4,18 @@ CXXFLAGS= -std=c++20 -Wall -Wextra -pedantic -O2 -ggdb3
 LINK.o = $(LINK.cc)
 
 cpps := $(wildcard *.cpp)
-objects := $(patsubst %.cpp, %.o, ${cpps})
-executables := $(patsubst %.cpp, %, ${cpps})
+objects := $(sort $(patsubst %.cpp, %_sync.o, ${cpps}) $(patsubst %.cpp, %_unsync.o, ${cpps}))
+executables := $(sort $(patsubst %.cpp, %_sync, ${cpps}) $(patsubst %.cpp, %_unsync, ${cpps}))
 
 all: ${executables}
 
 ${objects}: Makefile
+
+%_sync.o: %.cpp
+	${CXX} -c ${CXXFLAGS} -DSTDIO_SYNC=true -o $@ $<
+
+%_unsync.o: %.cpp
+	${CXX} -c ${CXXFLAGS} -DSTDIO_SYNC=false -o $@ $<
 
 prepare_98M:
 	rm -f input
