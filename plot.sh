@@ -6,6 +6,7 @@ NR > 1 {
 	split($0, a, " ");
 	label = a[1];
 	gsub("_", "-", label)
+	gsub("-(un)?sync", "", label)
 	split($4, w, ":");
 	# 2nd row
 	getline;
