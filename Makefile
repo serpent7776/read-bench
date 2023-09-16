@@ -1,4 +1,5 @@
-CXXFLAGS= -std=c++20 -Wall -Wextra -pedantic -O2 -ggdb3
+CXXFLAGS= -std=c++20 -Wall -Wextra -pedantic -O2 -ggdb3 #-stdlib=libc++
+# CXX=clang++
 
 # https://stackoverflow.com/a/13375395/5956245
 LINK.o = $(LINK.cc)
