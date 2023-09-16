@@ -5,6 +5,7 @@
 
 int main(int argc, char** argv)
 {
+	std::ios_base::sync_with_stdio(STDIO_SYNC);
 	const int file = argc > 1 ? ::open(argv[1], O_RDONLY) : 0;
 	if (file < 0) abort();
 	const size_t bufsize = 1 << 16;
