@@ -1,0 +1,14 @@
+#!/bin/sh
+sz=`wc -c input | awk '{print $1}'`
+
+check() {
+	if ! [ "$out" -eq "$sz" ]; then
+		echo $out
+		exit 1
+	fi
+}
+
+echo "time $1 input"
+out=`\time "$1" input`
+check
+echo
